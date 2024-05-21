@@ -51,6 +51,7 @@ draw :: proc() {
   draw_camera()
 
   rl.EndMode3D()
+  draw_camera()
 
   rl.DrawFPS(10, 10)
   rl.EndDrawing()

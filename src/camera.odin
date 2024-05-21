@@ -20,6 +20,7 @@ init_camera :: proc() {
     projection = .PERSPECTIVE,
   }
 
+  // rl.DisableCursor()
 }
 
 update_camera :: proc() {
@@ -30,12 +31,11 @@ update_camera :: proc() {
   camera.position = {player.pos.x, player.pos.y + 20, player.pos.z + 50}
 
   ray = rl.GetMouseRay(rl.GetMousePosition(), camera)
-
-  // rl.UpdateCamera(&camera, .FIRST_PERSON)
+  // rl.UpdateCamera(&camera, .FREE)
 }
 
 draw_camera :: proc() {
-  // rl.DrawCircleV(rl.GetMousePosition(), 5, rl.PURPLE)
+  rl.DrawCircleV(center, 5, rl.PURPLE)
   // rl.DrawRay(ray, rl.PURPLE)
   // rl.DrawLine3D(player.pos, ray.position, rl.PURPLE)
 }
