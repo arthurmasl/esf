@@ -30,11 +30,10 @@ update_player :: proc() {
 
   player.pos += player.vel * rl.GetFrameTime()
   player.angle = math.atan2(direction.x, direction.z) * rl.RAD2DEG - 90
-
 }
 
 draw_player :: proc() {
-  rl.DrawModelEx(cube, player.pos, {0, 0.1, 0}, player.angle, {1, 1, 1}, rl.MAROON)
+  rl.DrawModelEx(cube, camera.position, {0, 0.1, 0}, player.angle, {1, 1, 1}, rl.MAROON)
 
   if debug do rl.DrawCubeWiresV(player.pos, size, rl.BLACK)
 }

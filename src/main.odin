@@ -37,8 +37,8 @@ init :: proc() {
 update :: proc() {
   handle_input()
 
-  update_player()
   update_camera()
+  update_player()
 }
 
 draw :: proc() {

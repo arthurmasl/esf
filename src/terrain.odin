@@ -30,7 +30,7 @@ draw_terrain :: proc() {
 
   for &terrain in terrain {
     rl.DrawCubeV(terrain.pos, terrain.size, rl.GRAY)
-    if debug do rl.DrawCubeWiresV(terrain.pos, terrain.size, rl.BLACK)
+    rl.DrawCubeWiresV(terrain.pos, terrain.size, rl.BLACK)
   }
 
   if debug do rl.DrawGrid(100, 5)
