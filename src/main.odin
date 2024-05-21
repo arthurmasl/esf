@@ -30,7 +30,7 @@ main :: proc() {
 
 init :: proc() {
   init_terrain()
-  init_player()
+  // init_player()
   init_camera()
 }
 
@@ -38,7 +38,7 @@ update :: proc() {
   handle_input()
 
   update_camera()
-  update_player()
+  // update_player()
 }
 
 draw :: proc() {

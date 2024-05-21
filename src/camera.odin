@@ -10,7 +10,7 @@ direction: rl.Vector3
 
 ray: rl.Ray
 
-SPEED :: f32(0.3)
+SPEED :: f32(0.5)
 SENS :: f32(0.1)
 
 init_camera :: proc() {
@@ -31,7 +31,7 @@ update_camera :: proc() {
     &camera,
     {player.acc.z * SPEED, player.acc.x * SPEED, player.acc.y * SPEED},
     {rl.GetMouseDelta().x * SENS, rl.GetMouseDelta().y * SENS, 0},
-    rl.GetMouseWheelMove() * 2,
+    0,
   )
 }
 
