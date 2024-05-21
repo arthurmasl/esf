@@ -1,5 +1,6 @@
 package main
 
+import "core:math"
 import rl "vendor:raylib"
 
 Player :: struct {
@@ -13,10 +14,14 @@ Player :: struct {
 
 player: Player
 
+cube: rl.Model
+
 init_player :: proc() {
   player.speed = 20
   player.friction = 0.9
   player.pos.y = 1
+
+  cube = rl.LoadModelFromMesh(rl.GenMeshCube(size.x, size.y, size.z))
 }
 
 update_player :: proc() {
@@ -24,10 +29,12 @@ update_player :: proc() {
   player.vel += player.acc * player.speed
 
   player.pos += player.vel * rl.GetFrameTime()
-  player.angle = -rl.Vector2LineAngle(center, rl.GetMousePosition())
+  player.angle = math.atan2(direction.x, direction.z) * rl.RAD2DEG - 90
+
 }
 
 draw_player :: proc() {
-  rl.DrawCubeV(player.pos, size, rl.MAROON)
+  rl.DrawModelEx(cube, player.pos, {0, 0.1, 0}, player.angle, {1, 1, 1}, rl.MAROON)
+
   if debug do rl.DrawCubeWiresV(player.pos, size, rl.BLACK)
 }

@@ -5,6 +5,9 @@ import rl "vendor:raylib"
 
 camera: rl.Camera3D
 center: rl.Vector2
+cursor: rl.Vector2
+direction: rl.Vector3
+
 ray: rl.Ray
 
 init_camera :: proc() {
@@ -20,18 +23,19 @@ init_camera :: proc() {
 }
 
 update_camera :: proc() {
+  cursor = rl.GetMousePosition()
+  direction = rl.Vector3{cursor.x, 0, cursor.y} - rl.Vector3{center.x, 0, center.y}
+
   camera.target = player.pos
   camera.position = {player.pos.x, player.pos.y + 20, player.pos.z + 50}
 
   ray = rl.GetMouseRay(rl.GetMousePosition(), camera)
 
   // rl.UpdateCamera(&camera, .FIRST_PERSON)
-  // rl.UpdateCameraPro(&camera, player.pos, 0, 1)
 }
 
 draw_camera :: proc() {
-  rl.DrawRay(ray, rl.PURPLE)
-  rl.DrawCircleV(rl.GetMousePosition(), 5, rl.PURPLE)
-
-  rl.DrawLine3D(player.pos, ray.position, rl.PURPLE)
+  // rl.DrawCircleV(rl.GetMousePosition(), 5, rl.PURPLE)
+  // rl.DrawRay(ray, rl.PURPLE)
+  // rl.DrawLine3D(player.pos, ray.position, rl.PURPLE)
 }
