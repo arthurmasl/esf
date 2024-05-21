@@ -1,6 +1,7 @@
 package main
 
 import "core:fmt"
+import "core:math"
 import rl "vendor:raylib"
 
 camera: rl.Camera3D
@@ -8,9 +9,10 @@ center: rl.Vector2
 cursor: rl.Vector2
 direction: rl.Vector3
 
-ray: rl.Ray
+speed := f32(0.5)
 
-SPEED :: f32(0.5)
+SPEED_NORMAL :: 0.5
+SPEED_TURBO :: 2
 SENS :: f32(0.1)
 
 init_camera :: proc() {
@@ -27,9 +29,12 @@ init_camera :: proc() {
 }
 
 update_camera :: proc() {
+  // camera.fovy = turbo ? 90 : 85
+  speed = turbo ? SPEED_TURBO : SPEED_NORMAL
+
   rl.UpdateCameraPro(
     &camera,
-    {player.acc.z * SPEED, player.acc.x * SPEED, player.acc.y * SPEED},
+    {player.acc.z * speed, player.acc.x * speed, player.acc.y * speed},
     {rl.GetMouseDelta().x * SENS, rl.GetMouseDelta().y * SENS, 0},
     0,
   )

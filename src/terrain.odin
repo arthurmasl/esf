@@ -26,7 +26,7 @@ init_terrain :: proc() {
 }
 
 draw_terrain :: proc() {
-  rl.DrawPlane({}, 500, rl.DARKGREEN)
+  rl.DrawPlane({}, RANGE * 20, rl.DARKGREEN)
 
   for &terrain in terrain {
     rl.DrawCubeV(terrain.pos, terrain.size, rl.GRAY)
