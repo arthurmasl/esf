@@ -43,7 +43,7 @@ update :: proc() {
 
 draw :: proc() {
   rl.BeginDrawing()
-  rl.ClearBackground(rl.DARKBLUE)
+  rl.ClearBackground(rl.RAYWHITE)
   rl.BeginMode3D(camera)
 
   draw_terrain()

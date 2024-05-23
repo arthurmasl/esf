@@ -32,10 +32,10 @@ handle_input :: proc() {
 
   player.acc = {}
   if is_key_down() {
-    if rl.IsKeyDown(.E) do player.acc.z += 1
-    if rl.IsKeyDown(.D) do player.acc.z -= 1
-    if rl.IsKeyDown(.S) do player.acc.x -= 1
-    if rl.IsKeyDown(.F) do player.acc.x += 1
+    if rl.IsKeyDown(.E) do player.acc.x += 1
+    if rl.IsKeyDown(.D) do player.acc.x -= 1
+    if rl.IsKeyDown(.S) do player.acc.z -= 1
+    if rl.IsKeyDown(.F) do player.acc.z += 1
 
     if rl.IsKeyDown(.SPACE) do player.acc.y += 1
     if rl.IsKeyDown(.Z) do player.acc.y -= 1
