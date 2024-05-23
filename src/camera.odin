@@ -9,17 +9,17 @@ center: rl.Vector2
 cursor: rl.Vector2
 direction: rl.Vector3
 
-speed := f32(0.5)
+speed := f32(SPEED_NORMAL)
 
-SPEED_NORMAL :: 0.5
-SPEED_TURBO :: 2
+SPEED_NORMAL :: 0.05
+SPEED_TURBO :: 0.5
 SENS :: f32(0.1)
 
 init_camera :: proc() {
   center = {f32(width / 2), f32(height / 2)}
   camera = {
-    position   = {0, 2, 4},
-    target     = {0, 0, 0},
+    position   = {0, 1, 10},
+    target     = {0, 2, 0},
     up         = {0, 1, 0},
     fovy       = 60,
     projection = .PERSPECTIVE,
@@ -29,11 +29,7 @@ init_camera :: proc() {
 }
 
 update_camera :: proc() {
-  // camera.fovy = turbo ? 90 : 85
   speed = turbo ? SPEED_TURBO : SPEED_NORMAL
-
-  // camera.position = {0, 2, -100}
-  // camera.target = {0, 2, 0}
 
   rl.UpdateCameraPro(
     &camera,

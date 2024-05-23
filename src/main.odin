@@ -36,18 +36,17 @@ init :: proc() {
 
 update :: proc() {
   handle_input()
-
   update_camera()
   // update_player()
 }
 
 draw :: proc() {
   rl.BeginDrawing()
-  rl.ClearBackground(rl.RAYWHITE)
+  rl.ClearBackground(rl.BLACK)
   rl.BeginMode3D(camera)
 
   draw_terrain()
-  draw_player()
+  // draw_player()
   draw_camera()
 
   rl.EndMode3D()

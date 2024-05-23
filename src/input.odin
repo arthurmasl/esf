@@ -38,7 +38,10 @@ handle_input :: proc() {
     if rl.IsKeyDown(.F) do player.acc.z += 1
 
     if rl.IsKeyDown(.SPACE) do player.acc.y += 1
-    if rl.IsKeyDown(.Z) do player.acc.y -= 1
+    if camera.position.y >= 1 {
+      if rl.IsKeyDown(.Z) do player.acc.y -= 1
+    }
+
   }
 
   if rl.IsKeyPressed(.T) do turbo = !turbo
