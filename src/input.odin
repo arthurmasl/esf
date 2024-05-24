@@ -65,12 +65,17 @@ handle_input :: proc() {
     return
   }
 
-  if rl.IsKeyDown(.SPACE) do player.acc.y += JUMP_POWER
-  if camera.position.y >= 1 {
-    if rl.IsKeyDown(.Z) do player.acc.y -= JUMP_POWER
+  if rl.IsKeyDown(.SPACE) {
+    player.acc.y += JUMP_POWER
   }
 
-  if rl.IsKeyPressed(.T) do turbo = !turbo
+  if camera.position.y >= 1 && rl.IsKeyDown(.Z) {
+    player.acc.y -= JUMP_POWER
+  }
+
+  if rl.IsKeyPressed(.T) {
+    turbo = !turbo
+  }
 
   if player.acc != 0 do player.acc = rl.Vector3Normalize(player.acc)
 }
