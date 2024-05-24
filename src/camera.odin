@@ -38,6 +38,13 @@ update_camera :: proc() {
     0,
   )
 
+  if camera.position.y >= 1.1 {
+    in_air = true
+  }
+  if camera.position.y <= 1 {
+    in_air = false
+    down = false
+  }
 }
 
 draw_camera :: proc() {
