@@ -4,36 +4,34 @@ import "core:math"
 import rl "vendor:raylib"
 
 Player :: struct {
-  pos:      rl.Vector3,
-  acc:      rl.Vector3,
-  vel:      rl.Vector3,
-  friction: f32,
-  speed:    f32,
-  angle:    f32,
+  acc: rl.Vector3,
 }
 
 player: Player
 
-cube: rl.Model
-
-init_player :: proc() {
-  player.speed = 20
-  player.friction = 0.9
-  player.pos.y = 1
-
-  cube = rl.LoadModelFromMesh(rl.GenMeshCube(size.x, size.y, size.z))
-}
+turbo: bool
+in_air: bool
+down: bool
 
 update_player :: proc() {
-  player.vel *= (1 - player.friction)
-  player.vel += player.acc * player.speed
+  if camera.position.y > 1 {
+    in_air = true
+  }
 
-  player.pos += player.vel * rl.GetFrameTime()
-  player.angle = math.atan2(direction.x, direction.z) * rl.RAD2DEG - 90
-}
+  if camera.position.y <= 1 {
+    in_air = false
+    down = false
+  }
 
-draw_player :: proc() {
-  rl.DrawModelEx(cube, camera.position, {0, 0.1, 0}, player.angle, {1, 1, 1}, rl.MAROON)
+  if in_air && !down && camera.position.y >= JUMP_HEIGHT {
+    down = true
+  }
 
-  if debug do rl.DrawCubeWiresV(player.pos, size, rl.BLACK)
+  if in_air && !down {
+    player.acc.y += JUMP_POWER
+  }
+
+  if in_air && down {
+    player.acc.y -= JUMP_POWER
+  }
 }

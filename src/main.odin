@@ -30,14 +30,13 @@ main :: proc() {
 
 init :: proc() {
   init_terrain()
-  // init_player()
   init_camera()
 }
 
 update :: proc() {
   handle_input()
+  update_player()
   update_camera()
-  // update_player()
 }
 
 draw :: proc() {
@@ -46,7 +45,6 @@ draw :: proc() {
   rl.BeginMode3D(camera)
 
   draw_terrain()
-  // draw_player()
   draw_camera()
 
   rl.EndMode3D()
