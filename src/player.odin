@@ -7,8 +7,11 @@ Player :: struct {
   acc: rl.Vector3,
 }
 
+JUMP_HEIGHT :: 15
+JUMP_POWER :: 3
+
 SPEED_NORMAL :: 0.05
-SPEED_TURBO :: 0.2
+SPEED_TURBO :: 0.4
 
 player: Player
 

@@ -5,9 +5,6 @@ import rl "vendor:raylib"
 
 key_pressed: bool
 
-JUMP_HEIGHT :: 5
-JUMP_POWER :: 2
-
 is_key_down :: proc() -> bool {
   return(
     rl.IsKeyDown(.E) ||
@@ -43,7 +40,7 @@ handle_input :: proc() {
     player.acc.y += JUMP_POWER
   }
 
-  if in_air && rl.IsKeyDown(.Z) {
+  if (in_air || fly) && rl.IsKeyDown(.Z) {
     player.acc.y -= JUMP_POWER
   }
 
