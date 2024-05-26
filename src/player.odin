@@ -7,13 +7,20 @@ Player :: struct {
   acc: rl.Vector3,
 }
 
+SPEED_NORMAL :: 0.05
+SPEED_TURBO :: 0.2
+
 player: Player
 
 turbo: bool
+fly: bool
+
 in_air: bool
 down: bool
 
 update_player :: proc() {
+  if fly do return
+
   if camera.position.y > 1 {
     in_air = true
   }

@@ -51,5 +51,9 @@ handle_input :: proc() {
     turbo = !turbo
   }
 
+  if rl.IsKeyPressed(.G) {
+    fly = !fly
+  }
+
   if player.acc != 0 do player.acc = rl.Vector3Normalize(player.acc)
 }

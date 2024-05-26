@@ -11,8 +11,6 @@ direction: rl.Vector3
 
 speed := f32(SPEED_NORMAL)
 
-SPEED_NORMAL :: 0.05
-SPEED_TURBO :: 0.5
 SENS :: f32(0.1)
 
 init_camera :: proc() {
@@ -38,13 +36,6 @@ update_camera :: proc() {
     0,
   )
 
-  if camera.position.y >= 1.1 {
-    in_air = true
-  }
-  if camera.position.y <= 1 {
-    in_air = false
-    down = false
-  }
 }
 
 draw_camera :: proc() {
